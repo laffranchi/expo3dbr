@@ -1,7 +1,7 @@
-import { useParams, useSearchParams, Link, useNavigate } from "react-router-dom";
+import { useSearchParams, Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ChevronLeft, CreditCard, Calendar, MapPin, Ticket, Check } from "lucide-react";
+import { ChevronLeft, CreditCard, Calendar, MapPin, Ticket, Check, Minus, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -10,15 +10,61 @@ import { Separator } from "@/components/ui/separator";
 import { useToast } from "@/hooks/use-toast";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { mockEvents } from "@/data/mockEvents";
+
+// Ticket types data - same as TicketsSection
+const ticketTypesData = [
+  {
+    id: "unico",
+    name: "Ingresso Único",
+    description: "Acesso completo à feira de exposições durante todos os dias do evento.",
+    prices: [
+      { lot: 1, price: 50, available: true },
+      { lot: 2, price: 70, available: true },
+      { lot: 3, price: 90, available: true },
+    ],
+  },
+  {
+    id: "trilha",
+    name: "Ingresso + Trilha",
+    description: "Feira + acesso às trilhas de conhecimento com workshops práticos.",
+    prices: [
+      { lot: 1, price: 150, available: true },
+      { lot: 2, price: 200, available: true },
+      { lot: 3, price: 250, available: true },
+    ],
+  },
+  {
+    id: "congresso",
+    name: "Ingresso + Congresso",
+    description: "Feira + palestras exclusivas do congresso de manufatura aditiva.",
+    prices: [
+      { lot: 1, price: 180, available: true },
+      { lot: 2, price: 230, available: true },
+      { lot: 3, price: 280, available: true },
+    ],
+  },
+  {
+    id: "completo",
+    name: "Ingresso Completo",
+    description: "Acesso total: feira, trilhas de conhecimento e congresso.",
+    prices: [
+      { lot: 1, price: 280, available: true },
+      { lot: 2, price: 350, available: true },
+      { lot: 3, price: 420, available: true },
+    ],
+  },
+];
 
 const Checkout = () => {
-  const { id } = useParams();
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const { toast } = useToast();
-  const quantity = parseInt(searchParams.get("qty") || "1");
+  const ticketId = searchParams.get("ticket") || "unico";
 
+  const ticket = ticketTypesData.find((t) => t.id === ticketId) || ticketTypesData[0];
+  const currentLot = ticket.prices.find((p) => p.available) || ticket.prices[0];
+
+  const [quantity, setQuantity] = useState(1);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -28,25 +74,6 @@ const Checkout = () => {
   const [isProcessing, setIsProcessing] = useState(false);
   const [isComplete, setIsComplete] = useState(false);
 
-  const event = mockEvents.find((e) => e.id === id);
-
-  if (!event) {
-    return (
-      <div className="min-h-screen flex flex-col bg-background">
-        <Header />
-        <main className="flex-1 flex items-center justify-center">
-          <div className="text-center">
-            <h1 className="text-2xl font-bold mb-4">Evento não encontrado</h1>
-            <Link to="/">
-              <Button>Voltar para a página inicial</Button>
-            </Link>
-          </div>
-        </main>
-        <Footer />
-      </div>
-    );
-  }
-
   const formatPrice = (price: number) => {
     return new Intl.NumberFormat("pt-BR", {
       style: "currency",
@@ -54,16 +81,7 @@ const Checkout = () => {
     }).format(price);
   };
 
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString("pt-BR", {
-      day: "numeric",
-      month: "long",
-      year: "numeric",
-    });
-  };
-
-  const totalPrice = event.price * quantity;
+  const totalPrice = currentLot.price * quantity;
   const serviceFee = totalPrice * 0.1;
   const finalTotal = totalPrice + serviceFee;
 
@@ -98,15 +116,15 @@ const Checkout = () => {
             </div>
             <h1 className="text-3xl font-bold mb-4">Compra Confirmada!</h1>
             <p className="text-muted-foreground mb-8">
-              Seus ingressos para <strong>{event.title}</strong> foram enviados para{" "}
+              Seus ingressos para a <strong>EXPO 3D BR</strong> foram enviados para{" "}
               <strong>{formData.email}</strong>
             </p>
 
             <Card className="glass-card mb-6">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between mb-4">
-                  <span className="text-muted-foreground">Evento</span>
-                  <span className="font-medium">{event.title}</span>
+                  <span className="text-muted-foreground">Tipo de Ingresso</span>
+                  <span className="font-medium">{ticket.name}</span>
                 </div>
                 <div className="flex items-center justify-between mb-4">
                   <span className="text-muted-foreground">Quantidade</span>
@@ -130,7 +148,7 @@ const Checkout = () => {
               </Link>
               <Link to="/">
                 <Button variant="outline" className="w-full">
-                  Continuar Explorando
+                  Voltar ao Início
                 </Button>
               </Link>
             </div>
@@ -149,11 +167,11 @@ const Checkout = () => {
         <div className="container mx-auto px-4">
           {/* Back Link */}
           <Link
-            to={`/evento/${id}`}
+            to="/#ingressos"
             className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground mb-6"
           >
             <ChevronLeft className="h-4 w-4" />
-            Voltar ao evento
+            Voltar aos ingressos
           </Link>
 
           <h1 className="text-3xl font-bold mb-8">Finalizar Compra</h1>
@@ -270,22 +288,53 @@ const Checkout = () => {
                 </CardHeader>
                 <CardContent>
                   {/* Event Info */}
-                  <div className="flex gap-4 mb-6">
-                    <img
-                      src={event.image}
-                      alt={event.title}
-                      className="w-20 h-20 rounded-lg object-cover"
-                    />
-                    <div className="flex-1">
-                      <h3 className="font-semibold line-clamp-2">{event.title}</h3>
-                      <div className="flex items-center gap-1 text-sm text-muted-foreground mt-1">
-                        <Calendar className="h-3 w-3" />
-                        {formatDate(event.date)}
-                      </div>
-                      <div className="flex items-center gap-1 text-sm text-muted-foreground">
-                        <MapPin className="h-3 w-3" />
-                        {event.city}
-                      </div>
+                  <div className="mb-6">
+                    <h3 className="font-semibold text-lg mb-1">EXPO 3D BR</h3>
+                    <p className="text-muted-foreground text-sm mb-3">
+                      Feira de Manufatura Aditiva
+                    </p>
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground mb-1">
+                      <Calendar className="h-4 w-4" />
+                      Data a definir
+                    </div>
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <MapPin className="h-4 w-4" />
+                      Local a definir
+                    </div>
+                  </div>
+
+                  <Separator className="my-4" />
+
+                  {/* Ticket Type */}
+                  <div className="mb-4">
+                    <p className="text-sm text-muted-foreground mb-1">Tipo de Ingresso</p>
+                    <p className="font-semibold">{ticket.name}</p>
+                    <p className="text-xs text-muted-foreground">{ticket.description}</p>
+                  </div>
+
+                  {/* Quantity */}
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-sm text-muted-foreground">Quantidade</span>
+                    <div className="flex items-center gap-3">
+                      <Button
+                        variant="outline"
+                        size="icon"
+                        className="h-8 w-8"
+                        onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                        disabled={quantity <= 1}
+                      >
+                        <Minus className="h-4 w-4" />
+                      </Button>
+                      <span className="w-8 text-center font-semibold">{quantity}</span>
+                      <Button
+                        variant="outline"
+                        size="icon"
+                        className="h-8 w-8"
+                        onClick={() => setQuantity(Math.min(10, quantity + 1))}
+                        disabled={quantity >= 10}
+                      >
+                        <Plus className="h-4 w-4" />
+                      </Button>
                     </div>
                   </div>
 
@@ -295,7 +344,7 @@ const Checkout = () => {
                   <div className="space-y-3">
                     <div className="flex items-center justify-between">
                       <span className="text-muted-foreground">
-                        {quantity}x Ingresso
+                        {quantity}x {ticket.name}
                       </span>
                       <span>{formatPrice(totalPrice)}</span>
                     </div>

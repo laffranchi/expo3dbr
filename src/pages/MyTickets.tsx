@@ -6,32 +6,19 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { mockEvents } from "@/data/mockEvents";
 
-// Mock purchased tickets
+// Mock purchased tickets for EXPO 3D BR
 const mockTickets = [
   {
     id: "ticket-1",
-    eventId: "1",
+    ticketType: "Ingresso + Trilha",
     purchaseDate: "2026-01-05",
     quantity: 2,
-    status: "valid" as const,
-  },
-  {
-    id: "ticket-2",
-    eventId: "3",
-    purchaseDate: "2026-01-03",
-    quantity: 1,
     status: "valid" as const,
   },
 ];
 
 const MyTickets = () => {
-  const ticketsWithEvents = mockTickets.map((ticket) => ({
-    ...ticket,
-    event: mockEvents.find((e) => e.id === ticket.eventId)!,
-  }));
-
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
     return date.toLocaleDateString("pt-BR", {
@@ -53,12 +40,12 @@ const MyTickets = () => {
           >
             <h1 className="text-3xl font-bold mb-2">Meus Ingressos</h1>
             <p className="text-muted-foreground mb-8">
-              Gerencie seus ingressos e acesse seus QR Codes
+              Gerencie seus ingressos para a EXPO 3D BR
             </p>
 
-            {ticketsWithEvents.length > 0 ? (
+            {mockTickets.length > 0 ? (
               <div className="space-y-4">
-                {ticketsWithEvents.map((ticket, index) => (
+                {mockTickets.map((ticket, index) => (
                   <motion.div
                     key={ticket.id}
                     initial={{ opacity: 0, y: 20 }}
@@ -68,39 +55,36 @@ const MyTickets = () => {
                     <Card className="glass-card overflow-hidden">
                       <CardContent className="p-0">
                         <div className="flex flex-col md:flex-row">
-                          {/* Event Image */}
-                          <div className="md:w-48 h-40 md:h-auto relative">
-                            <img
-                              src={ticket.event.image}
-                              alt={ticket.event.title}
-                              className="w-full h-full object-cover"
-                            />
-                            <Badge className="absolute top-3 left-3 gradient-primary text-primary-foreground border-0">
-                              {ticket.event.category}
-                            </Badge>
-                          </div>
-
-                          {/* Ticket Info */}
+                          {/* Event Info */}
                           <div className="flex-1 p-6">
                             <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
                               <div>
+                                <Badge className="gradient-primary text-primary-foreground border-0 mb-2">
+                                  {ticket.ticketType}
+                                </Badge>
                                 <h3 className="text-xl font-bold mb-2">
-                                  {ticket.event.title}
+                                  EXPO 3D BR
                                 </h3>
+                                <p className="text-muted-foreground text-sm mb-3">
+                                  Feira de Manufatura Aditiva
+                                </p>
                                 <div className="space-y-1">
                                   <div className="flex items-center gap-2 text-muted-foreground text-sm">
                                     <Calendar className="h-4 w-4" />
-                                    {formatDate(ticket.event.date)} às {ticket.event.time}
+                                    Data a definir
                                   </div>
                                   <div className="flex items-center gap-2 text-muted-foreground text-sm">
                                     <MapPin className="h-4 w-4" />
-                                    {ticket.event.location}, {ticket.event.city}
+                                    Local a definir
                                   </div>
                                   <div className="flex items-center gap-2 text-muted-foreground text-sm">
                                     <Ticket className="h-4 w-4" />
                                     {ticket.quantity} ingresso(s)
                                   </div>
                                 </div>
+                                <p className="text-xs text-muted-foreground mt-2">
+                                  Comprado em {formatDate(ticket.purchaseDate)}
+                                </p>
                               </div>
 
                               {/* QR Code Preview */}
@@ -124,11 +108,6 @@ const MyTickets = () => {
                                 <Download className="h-4 w-4 mr-2" />
                                 Baixar PDF
                               </Button>
-                              <Link to={`/evento/${ticket.eventId}`}>
-                                <Button variant="ghost" size="sm">
-                                  Ver Evento
-                                </Button>
-                              </Link>
                             </div>
                           </div>
                         </div>
@@ -144,11 +123,11 @@ const MyTickets = () => {
                   Você ainda não tem ingressos
                 </h2>
                 <p className="text-muted-foreground mb-6">
-                  Explore eventos incríveis e garanta seu lugar!
+                  Garanta sua participação na EXPO 3D BR!
                 </p>
-                <Link to="/">
+                <Link to="/#ingressos">
                   <Button className="gradient-primary text-primary-foreground">
-                    Explorar Eventos
+                    Comprar Ingressos
                   </Button>
                 </Link>
               </div>
