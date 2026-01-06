@@ -31,7 +31,7 @@ const HeroSection = () => {
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ delay: 0.2, type: "spring" }}
-            className="h-24 md:h-32 w-auto mx-auto mb-8"
+            className="h-40 md:h-56 lg:h-64 w-auto mx-auto mb-8"
           />
 
           {/* Badge */}
