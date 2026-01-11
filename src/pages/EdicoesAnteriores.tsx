@@ -12,9 +12,11 @@ interface GalleryImage {
 interface Edition {
   title: string;
   location?: string;
+  subtitle?: string;
   images: GalleryImage[];
 }
 
+// Edições principais
 const editions: Edition[] = [
   {
     title: "Expo3DBR 2024",
@@ -199,66 +201,69 @@ const editions: Edition[] = [
       { src: "/images/edicoes/2017/8768661_orig-1-400x284.jpg", alt: "2ª Expo3Dbr 2017 - Foto 18" },
       { src: "/images/edicoes/2017/9340956_orig-1-400x284.jpg", alt: "2ª Expo3Dbr 2017 - Foto 19" },
       { src: "/images/edicoes/2017/9392187_orig-1-400x284.jpg", alt: "2ª Expo3Dbr 2017 - Foto 20" },
-      { src: "/images/edicoes/2017/20170501-095443_orig-400x284.jpg", alt: "2ª Expo3Dbr 2017 - Foto 21" },
-      { src: "/images/edicoes/2017/20170501-095453_orig-400x284.jpg", alt: "2ª Expo3Dbr 2017 - Foto 22" },
-      { src: "/images/edicoes/2017/20170501-095458_orig-400x284.jpg", alt: "2ª Expo3Dbr 2017 - Foto 23" },
-      { src: "/images/edicoes/2017/20170501-144433_orig-400x284.jpg", alt: "2ª Expo3Dbr 2017 - Foto 24" },
-      { src: "/images/edicoes/2017/20170501-144514_orig-400x284.jpg", alt: "2ª Expo3Dbr 2017 - Foto 25" },
-      { src: "/images/edicoes/2017/20170501-144948_orig-400x284.jpg", alt: "2ª Expo3Dbr 2017 - Foto 26" },
-      { src: "/images/edicoes/2017/20170501-145036_orig-400x284.jpg", alt: "2ª Expo3Dbr 2017 - Foto 27" },
-      { src: "/images/edicoes/2017/20170501-145252_orig-400x284.jpg", alt: "2ª Expo3Dbr 2017 - Foto 28" },
-      { src: "/images/edicoes/2017/20170501-145356_orig-400x284.jpg", alt: "2ª Expo3Dbr 2017 - Foto 29" },
-      { src: "/images/edicoes/2017/20170501-145430_orig-400x284.jpg", alt: "2ª Expo3Dbr 2017 - Foto 30" },
-      { src: "/images/edicoes/2017/20170501-145748_orig-400x284.jpg", alt: "2ª Expo3Dbr 2017 - Foto 31" },
-      { src: "/images/edicoes/2017/20170501-145959_orig-400x284.jpg", alt: "2ª Expo3Dbr 2017 - Foto 32" },
-      { src: "/images/edicoes/2017/20170501-151930_orig-400x284.jpg", alt: "2ª Expo3Dbr 2017 - Foto 33" },
-      { src: "/images/edicoes/2017/20170501-152041_orig-400x284.jpg", alt: "2ª Expo3Dbr 2017 - Foto 34" },
-      { src: "/images/edicoes/2017/20170501-152248_orig-400x284.jpg", alt: "2ª Expo3Dbr 2017 - Foto 35" },
-      { src: "/images/edicoes/2017/20170501-152726_orig-400x284.jpg", alt: "2ª Expo3Dbr 2017 - Foto 36" },
-      { src: "/images/edicoes/2017/img-20170501-wa0047_orig-400x284.jpg", alt: "2ª Expo3Dbr 2017 - Foto 37" },
-      { src: "/images/edicoes/2017/img-20170501-wa0049_orig-400x284.jpg", alt: "2ª Expo3Dbr 2017 - Foto 38" },
-      { src: "/images/edicoes/2017/img-20170501-wa0055_orig-400x284.jpg", alt: "2ª Expo3Dbr 2017 - Foto 39" },
-      { src: "/images/edicoes/2017/img-20170501-wa0056_orig-400x284.jpg", alt: "2ª Expo3Dbr 2017 - Foto 40" },
-      { src: "/images/edicoes/2017/img-20170501-wa0058_orig-400x284.jpg", alt: "2ª Expo3Dbr 2017 - Foto 41" },
-      { src: "/images/edicoes/2017/img-20170501-wa0072_orig-400x284.jpg", alt: "2ª Expo3Dbr 2017 - Foto 42" },
-      { src: "/images/edicoes/2017/img-20170501-wa0073_orig-400x284.jpg", alt: "2ª Expo3Dbr 2017 - Foto 43" },
-      { src: "/images/edicoes/2017/img-20170501-wa0086_orig-400x284.jpg", alt: "2ª Expo3Dbr 2017 - Foto 44" },
-      { src: "/images/edicoes/2017/img-20170502-wa0055_orig-400x284.jpg", alt: "2ª Expo3Dbr 2017 - Foto 45" },
-      { src: "/images/edicoes/2017/img-20170502-wa0059_orig-400x284.jpg", alt: "2ª Expo3Dbr 2017 - Foto 46" },
-      { src: "/images/edicoes/2017/img-20170502-wa0062_orig-400x284.jpg", alt: "2ª Expo3Dbr 2017 - Foto 47" },
-      { src: "/images/edicoes/2017/img-20170502-wa0091_orig-400x284.jpg", alt: "2ª Expo3Dbr 2017 - Foto 48" },
     ],
   },
   {
     title: "1ª Expo3Dbr 2016",
     location: "Hortolândia – SP",
+    subtitle: "Juntos Criando o Futuro",
     images: [
-      { src: "https://expo3dbr.com.br/wp-content/uploads/2024/02/1edp24_orig.jpg", alt: "1ª Expo3Dbr 2016 - Foto 1" },
-      { src: "https://expo3dbr.com.br/wp-content/uploads/2024/02/1edp23_orig.jpg", alt: "1ª Expo3Dbr 2016 - Foto 2" },
-      { src: "https://expo3dbr.com.br/wp-content/uploads/2024/02/1edp22_orig.jpg", alt: "1ª Expo3Dbr 2016 - Foto 3" },
-      { src: "https://expo3dbr.com.br/wp-content/uploads/2024/02/1edp21_orig.jpg", alt: "1ª Expo3Dbr 2016 - Foto 4" },
-      { src: "https://expo3dbr.com.br/wp-content/uploads/2024/02/1edp20_orig.jpg", alt: "1ª Expo3Dbr 2016 - Foto 5" },
-      { src: "https://expo3dbr.com.br/wp-content/uploads/2024/02/1edp19_orig.jpg", alt: "1ª Expo3Dbr 2016 - Foto 6" },
-      { src: "https://expo3dbr.com.br/wp-content/uploads/2024/02/1edp18_orig.jpg", alt: "1ª Expo3Dbr 2016 - Foto 7" },
-      { src: "https://expo3dbr.com.br/wp-content/uploads/2024/02/1edp17_orig.jpg", alt: "1ª Expo3Dbr 2016 - Foto 8" },
-      { src: "https://expo3dbr.com.br/wp-content/uploads/2024/02/1edp16_orig.jpg", alt: "1ª Expo3Dbr 2016 - Foto 9" },
-      { src: "https://expo3dbr.com.br/wp-content/uploads/2024/02/1edp15_orig.jpg", alt: "1ª Expo3Dbr 2016 - Foto 10" },
-      { src: "https://expo3dbr.com.br/wp-content/uploads/2024/02/1edp14_orig.jpg", alt: "1ª Expo3Dbr 2016 - Foto 11" },
-      { src: "https://expo3dbr.com.br/wp-content/uploads/2024/02/1edp13_orig.jpg", alt: "1ª Expo3Dbr 2016 - Foto 12" },
-      { src: "https://expo3dbr.com.br/wp-content/uploads/2024/02/1edp12_orig.jpg", alt: "1ª Expo3Dbr 2016 - Foto 13" },
-      { src: "https://expo3dbr.com.br/wp-content/uploads/2024/02/1edp11_orig.jpg", alt: "1ª Expo3Dbr 2016 - Foto 14" },
-      { src: "https://expo3dbr.com.br/wp-content/uploads/2024/02/1edp10_orig.jpg", alt: "1ª Expo3Dbr 2016 - Foto 15" },
-      { src: "https://expo3dbr.com.br/wp-content/uploads/2024/02/1edp9_orig.jpg", alt: "1ª Expo3Dbr 2016 - Foto 16" },
-      { src: "https://expo3dbr.com.br/wp-content/uploads/2024/02/1edp8_orig.jpg", alt: "1ª Expo3Dbr 2016 - Foto 17" },
-      { src: "https://expo3dbr.com.br/wp-content/uploads/2024/02/1edp7_orig.jpg", alt: "1ª Expo3Dbr 2016 - Foto 18" },
-      { src: "https://expo3dbr.com.br/wp-content/uploads/2024/02/1edp6_orig.jpg", alt: "1ª Expo3Dbr 2016 - Foto 19" },
-      { src: "https://expo3dbr.com.br/wp-content/uploads/2024/02/1edp5_orig.jpg", alt: "1ª Expo3Dbr 2016 - Foto 20" },
-      { src: "https://expo3dbr.com.br/wp-content/uploads/2024/02/1edp4_orig.jpg", alt: "1ª Expo3Dbr 2016 - Foto 21" },
-      { src: "https://expo3dbr.com.br/wp-content/uploads/2024/02/1edp3_orig.jpg", alt: "1ª Expo3Dbr 2016 - Foto 22" },
-      { src: "https://expo3dbr.com.br/wp-content/uploads/2024/02/1edp2_orig.jpg", alt: "1ª Expo3Dbr 2016 - Foto 23" },
-      { src: "https://expo3dbr.com.br/wp-content/uploads/2024/02/1edp1_orig.jpg", alt: "1ª Expo3Dbr 2016 - Foto 24" },
+      { src: "/images/edicoes/2016/20170501-095443_orig-400x284.jpg", alt: "1ª Expo3Dbr 2016 - Foto 1" },
+      { src: "/images/edicoes/2016/20170501-095453_orig-400x284.jpg", alt: "1ª Expo3Dbr 2016 - Foto 2" },
+      { src: "/images/edicoes/2016/20170501-095458_orig-400x284.jpg", alt: "1ª Expo3Dbr 2016 - Foto 3" },
+      { src: "/images/edicoes/2016/20170501-144433_orig-400x284.jpg", alt: "1ª Expo3Dbr 2016 - Foto 4" },
+      { src: "/images/edicoes/2016/20170501-144514_orig-400x284.jpg", alt: "1ª Expo3Dbr 2016 - Foto 5" },
+      { src: "/images/edicoes/2016/20170501-144948_orig-400x284.jpg", alt: "1ª Expo3Dbr 2016 - Foto 6" },
+      { src: "/images/edicoes/2016/20170501-145036_orig-400x284.jpg", alt: "1ª Expo3Dbr 2016 - Foto 7" },
+      { src: "/images/edicoes/2016/20170501-145252_orig-400x284.jpg", alt: "1ª Expo3Dbr 2016 - Foto 8" },
+      { src: "/images/edicoes/2016/20170501-145356_orig-400x284.jpg", alt: "1ª Expo3Dbr 2016 - Foto 9" },
+      { src: "/images/edicoes/2016/20170501-145430_orig-400x284.jpg", alt: "1ª Expo3Dbr 2016 - Foto 10" },
+      { src: "/images/edicoes/2016/20170501-145748_orig-400x284.jpg", alt: "1ª Expo3Dbr 2016 - Foto 11" },
+      { src: "/images/edicoes/2016/20170501-145959_orig-400x284.jpg", alt: "1ª Expo3Dbr 2016 - Foto 12" },
+      { src: "/images/edicoes/2016/20170501-151930_orig-400x284.jpg", alt: "1ª Expo3Dbr 2016 - Foto 13" },
+      { src: "/images/edicoes/2016/20170501-152041_orig-400x284.jpg", alt: "1ª Expo3Dbr 2016 - Foto 14" },
+      { src: "/images/edicoes/2016/20170501-152248_orig-400x284.jpg", alt: "1ª Expo3Dbr 2016 - Foto 15" },
+      { src: "/images/edicoes/2016/20170501-152726_orig-400x284.jpg", alt: "1ª Expo3Dbr 2016 - Foto 16" },
+      { src: "/images/edicoes/2016/img-20170501-wa0047_orig-400x284.jpg", alt: "1ª Expo3Dbr 2016 - Foto 17" },
+      { src: "/images/edicoes/2016/img-20170501-wa0049_orig-400x284.jpg", alt: "1ª Expo3Dbr 2016 - Foto 18" },
+      { src: "/images/edicoes/2016/img-20170501-wa0055_orig-400x284.jpg", alt: "1ª Expo3Dbr 2016 - Foto 19" },
+      { src: "/images/edicoes/2016/img-20170501-wa0056_orig-400x284.jpg", alt: "1ª Expo3Dbr 2016 - Foto 20" },
+      { src: "/images/edicoes/2016/img-20170501-wa0058_orig-400x284.jpg", alt: "1ª Expo3Dbr 2016 - Foto 21" },
+      { src: "/images/edicoes/2016/img-20170501-wa0072_orig-400x284.jpg", alt: "1ª Expo3Dbr 2016 - Foto 22" },
+      { src: "/images/edicoes/2016/img-20170501-wa0073_orig-400x284.jpg", alt: "1ª Expo3Dbr 2016 - Foto 23" },
+      { src: "/images/edicoes/2016/img-20170501-wa0086_orig-400x284.jpg", alt: "1ª Expo3Dbr 2016 - Foto 24" },
+      { src: "/images/edicoes/2016/img-20170502-wa0055_orig-400x284.jpg", alt: "1ª Expo3Dbr 2016 - Foto 25" },
+      { src: "/images/edicoes/2016/img-20170502-wa0059_orig-400x284.jpg", alt: "1ª Expo3Dbr 2016 - Foto 26" },
+      { src: "/images/edicoes/2016/img-20170502-wa0062_orig-400x284.jpg", alt: "1ª Expo3Dbr 2016 - Foto 27" },
+      { src: "/images/edicoes/2016/img-20170502-wa0091_orig-400x284.jpg", alt: "1ª Expo3Dbr 2016 - Foto 28" },
     ],
   },
+];
+
+// Eventos que participamos
+const eventos: Edition[] = [
+  {
+    title: "Sebrae 2023 - MS",
+    images: [
+      { src: "https://expo3dbr.com.br/wp-content/uploads/2024/02/sebrae1_orig.jpg", alt: "Sebrae 2023 MS - Foto 1" },
+      { src: "https://expo3dbr.com.br/wp-content/uploads/2024/02/sebrae2_orig.jpg", alt: "Sebrae 2023 MS - Foto 2" },
+      { src: "https://expo3dbr.com.br/wp-content/uploads/2024/02/sebrae3_orig.jpg", alt: "Sebrae 2023 MS - Foto 3" },
+      { src: "https://expo3dbr.com.br/wp-content/uploads/2024/02/sebrae4_orig.jpg", alt: "Sebrae 2023 MS - Foto 4" },
+    ],
+  },
+  {
+    title: "Expo3DBr na EXPO ISA Campinas 2019",
+    images: [
+      { src: "/images/eventos/expo-isa-2019/pcvc_orig-400x284.jpg", alt: "EXPO ISA Campinas 2019 - Foto 1" },
+      { src: "/images/eventos/expo-isa-2019/pd_orig-400x284.jpg", alt: "EXPO ISA Campinas 2019 - Foto 2" },
+      { src: "/images/eventos/expo-isa-2019/pecfqwedh_orig-400x284.jpg", alt: "EXPO ISA Campinas 2019 - Foto 3" },
+      { src: "/images/eventos/expo-isa-2019/pevcqwc_orig-400x284.jpg", alt: "EXPO ISA Campinas 2019 - Foto 4" },
+    ],
+  },
+];
+
+// Encontros
+const encontros: Edition[] = [
   {
     title: "Encontro 3D 2015",
     location: "Hortolândia – SP",
@@ -283,6 +288,9 @@ const EditionGallery = ({ edition, index }: { edition: Edition; index: number })
         <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-2">
           {edition.title}
         </h2>
+        {edition.subtitle && (
+          <p className="text-primary text-lg italic mb-1">{edition.subtitle}</p>
+        )}
         {edition.location && (
           <p className="text-muted-foreground text-lg">{edition.location}</p>
         )}
@@ -363,10 +371,35 @@ const EdicoesAnteriores = () => {
         </div>
       </section>
 
-      {/* Galleries */}
+      {/* Edições Principais */}
       <div className="container mx-auto px-4">
         {editions.map((edition, index) => (
           <EditionGallery key={edition.title} edition={edition} index={index} />
+        ))}
+      </div>
+
+      {/* Seção: Eventos que participamos */}
+      <section className="bg-muted/30 py-16">
+        <div className="container mx-auto px-4">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-3xl md:text-4xl font-bold text-foreground mb-12 text-center"
+          >
+            Eventos que Participamos
+          </motion.h2>
+          {eventos.map((evento, index) => (
+            <EditionGallery key={evento.title} edition={evento} index={index} />
+          ))}
+        </div>
+      </section>
+
+      {/* Seção: Encontros */}
+      <div className="container mx-auto px-4">
+        {encontros.map((encontro, index) => (
+          <EditionGallery key={encontro.title} edition={encontro} index={index} />
         ))}
       </div>
 
