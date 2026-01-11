@@ -75,6 +75,9 @@ const editions: Edition[] = [
       { src: "/images/edicoes/2023/DSC_0660_Easy-Resize.com_-400x284.jpg", alt: "Expo3DBR 2023 - Foto 19" },
       { src: "/images/edicoes/2023/DSC_0692_Easy-Resize.com_-400x284.jpg", alt: "Expo3DBR 2023 - Foto 20" },
       { src: "/images/edicoes/2023/img-20230217-wa0067_orig-400x284.jpg", alt: "Expo3DBR 2023 - Foto 21" },
+      { src: "/images/edicoes/2023/img-20230401-wa0016_orig-400x284.jpg", alt: "Expo3DBR 2023 - Foto 22" },
+      { src: "/images/edicoes/2023/img-20230401-wa0017_orig-400x284.jpg", alt: "Expo3DBR 2023 - Foto 23" },
+      { src: "/images/edicoes/2023/img-20230403-wa0029_orig-400x284.jpg", alt: "Expo3DBR 2023 - Foto 24" },
     ],
   },
   {
