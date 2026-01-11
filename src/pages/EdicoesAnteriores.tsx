@@ -68,6 +68,12 @@ const editions: Edition[] = [
       { src: "/images/edicoes/2023/DSC_0413_Easy-Resize.com_-400x284.jpg", alt: "Expo3DBR 2023 - Foto 12" },
       { src: "/images/edicoes/2023/DSC_0466_Easy-Resize.com_-400x284.jpg", alt: "Expo3DBR 2023 - Foto 13" },
       { src: "/images/edicoes/2023/DSC_0510_Easy-Resize.com_-400x284.jpg", alt: "Expo3DBR 2023 - Foto 14" },
+      { src: "/images/edicoes/2023/DSC_0526_Easy-Resize.com_-400x284.jpg", alt: "Expo3DBR 2023 - Foto 15" },
+      { src: "/images/edicoes/2023/DSC_0559_Easy-Resize.com_-400x284.jpg", alt: "Expo3DBR 2023 - Foto 16" },
+      { src: "/images/edicoes/2023/DSC_0588_Easy-Resize.com_-400x284.jpg", alt: "Expo3DBR 2023 - Foto 17" },
+      { src: "/images/edicoes/2023/DSC_0596_Easy-Resize.com_-1-400x284.jpg", alt: "Expo3DBR 2023 - Foto 18" },
+      { src: "/images/edicoes/2023/DSC_0660_Easy-Resize.com_-400x284.jpg", alt: "Expo3DBR 2023 - Foto 19" },
+      { src: "/images/edicoes/2023/DSC_0692_Easy-Resize.com_-400x284.jpg", alt: "Expo3DBR 2023 - Foto 20" },
     ],
   },
   {
@@ -175,6 +181,9 @@ const editions: Edition[] = [
       { src: "/images/edicoes/2017/20170501-152041_orig-400x284.jpg", alt: "2ª Expo3Dbr 2017 - Foto 34" },
       { src: "/images/edicoes/2017/20170501-152248_orig-400x284.jpg", alt: "2ª Expo3Dbr 2017 - Foto 35" },
       { src: "/images/edicoes/2017/20170501-152726_orig-400x284.jpg", alt: "2ª Expo3Dbr 2017 - Foto 36" },
+      { src: "/images/edicoes/2017/img-20170501-wa0047_orig-400x284.jpg", alt: "2ª Expo3Dbr 2017 - Foto 37" },
+      { src: "/images/edicoes/2017/img-20170501-wa0049_orig-400x284.jpg", alt: "2ª Expo3Dbr 2017 - Foto 38" },
+      { src: "/images/edicoes/2017/img-20170501-wa0055_orig-400x284.jpg", alt: "2ª Expo3Dbr 2017 - Foto 39" },
     ],
   },
   {
@@ -205,6 +214,13 @@ const editions: Edition[] = [
       { src: "https://expo3dbr.com.br/wp-content/uploads/2024/02/1edp3_orig.jpg", alt: "1ª Expo3Dbr 2016 - Foto 22" },
       { src: "https://expo3dbr.com.br/wp-content/uploads/2024/02/1edp2_orig.jpg", alt: "1ª Expo3Dbr 2016 - Foto 23" },
       { src: "https://expo3dbr.com.br/wp-content/uploads/2024/02/1edp1_orig.jpg", alt: "1ª Expo3Dbr 2016 - Foto 24" },
+    ],
+  },
+  {
+    title: "Encontro 3D 2015",
+    location: "Hortolândia – SP",
+    images: [
+      { src: "/images/edicoes/2015/encontro-2015_orig.jpeg", alt: "Encontro 3D 2015 - Foto 1" },
     ],
   },
 ];
