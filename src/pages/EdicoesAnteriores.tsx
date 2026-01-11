@@ -139,6 +139,7 @@ const editions: Edition[] = [
       { src: "/images/edicoes/2018/20180429-153840_orig-400x284.jpg", alt: "3ª Expo3Dbr 2018 - Foto 18" },
       { src: "/images/edicoes/2018/20180429-153847_orig-400x284.jpg", alt: "3ª Expo3Dbr 2018 - Foto 19" },
       { src: "/images/edicoes/2018/20180429-153855_orig-400x284.jpg", alt: "3ª Expo3Dbr 2018 - Foto 20" },
+      { src: "/images/edicoes/2018/img-20180427-wa0081_orig-400x284.jpeg", alt: "3ª Expo3Dbr 2018 - Foto 21" },
     ],
   },
   {
@@ -184,6 +185,15 @@ const editions: Edition[] = [
       { src: "/images/edicoes/2017/img-20170501-wa0047_orig-400x284.jpg", alt: "2ª Expo3Dbr 2017 - Foto 37" },
       { src: "/images/edicoes/2017/img-20170501-wa0049_orig-400x284.jpg", alt: "2ª Expo3Dbr 2017 - Foto 38" },
       { src: "/images/edicoes/2017/img-20170501-wa0055_orig-400x284.jpg", alt: "2ª Expo3Dbr 2017 - Foto 39" },
+      { src: "/images/edicoes/2017/img-20170501-wa0056_orig-400x284.jpg", alt: "2ª Expo3Dbr 2017 - Foto 40" },
+      { src: "/images/edicoes/2017/img-20170501-wa0058_orig-400x284.jpg", alt: "2ª Expo3Dbr 2017 - Foto 41" },
+      { src: "/images/edicoes/2017/img-20170501-wa0072_orig-400x284.jpg", alt: "2ª Expo3Dbr 2017 - Foto 42" },
+      { src: "/images/edicoes/2017/img-20170501-wa0073_orig-400x284.jpg", alt: "2ª Expo3Dbr 2017 - Foto 43" },
+      { src: "/images/edicoes/2017/img-20170501-wa0086_orig-400x284.jpg", alt: "2ª Expo3Dbr 2017 - Foto 44" },
+      { src: "/images/edicoes/2017/img-20170502-wa0055_orig-400x284.jpg", alt: "2ª Expo3Dbr 2017 - Foto 45" },
+      { src: "/images/edicoes/2017/img-20170502-wa0059_orig-400x284.jpg", alt: "2ª Expo3Dbr 2017 - Foto 46" },
+      { src: "/images/edicoes/2017/img-20170502-wa0062_orig-400x284.jpg", alt: "2ª Expo3Dbr 2017 - Foto 47" },
+      { src: "/images/edicoes/2017/img-20170502-wa0091_orig-400x284.jpg", alt: "2ª Expo3Dbr 2017 - Foto 48" },
     ],
   },
   {
