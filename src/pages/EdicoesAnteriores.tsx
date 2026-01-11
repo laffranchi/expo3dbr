@@ -119,6 +119,13 @@ const editions: Edition[] = [
       { src: "https://expo3dbr.com.br/wp-content/uploads/2024/02/4edp18_orig.jpg", alt: "4ª Expo3DBr 2019 - Foto 16" },
       { src: "https://expo3dbr.com.br/wp-content/uploads/2024/02/4edp17_orig.jpg", alt: "4ª Expo3DBr 2019 - Foto 17" },
       { src: "https://expo3dbr.com.br/wp-content/uploads/2024/02/4edp16_orig.jpg", alt: "4ª Expo3DBr 2019 - Foto 18" },
+      { src: "/images/edicoes/2019/slide10_orig-400x284.jpg", alt: "4ª Expo3DBr 2019 - Foto 19" },
+      { src: "/images/edicoes/2019/slide11_orig-400x284.jpg", alt: "4ª Expo3DBr 2019 - Foto 20" },
+      { src: "/images/edicoes/2019/slide12_orig-400x284.jpg", alt: "4ª Expo3DBr 2019 - Foto 21" },
+      { src: "/images/edicoes/2019/slide13_orig-400x284.jpg", alt: "4ª Expo3DBr 2019 - Foto 22" },
+      { src: "/images/edicoes/2019/slide14_orig-400x284.jpg", alt: "4ª Expo3DBr 2019 - Foto 23" },
+      { src: "/images/edicoes/2019/slide15_orig-400x284.jpg", alt: "4ª Expo3DBr 2019 - Foto 24" },
+      { src: "/images/edicoes/2019/slide16_orig-400x284.jpg", alt: "4ª Expo3DBr 2019 - Foto 25" },
     ],
   },
   {
@@ -258,6 +265,8 @@ const eventos: Edition[] = [
       { src: "/images/eventos/expo-isa-2019/pd_orig-400x284.jpg", alt: "EXPO ISA Campinas 2019 - Foto 2" },
       { src: "/images/eventos/expo-isa-2019/pecfqwedh_orig-400x284.jpg", alt: "EXPO ISA Campinas 2019 - Foto 3" },
       { src: "/images/eventos/expo-isa-2019/pevcqwc_orig-400x284.jpg", alt: "EXPO ISA Campinas 2019 - Foto 4" },
+      { src: "/images/eventos/expo-isa-2019/psckvc_orig-400x284.jpg", alt: "EXPO ISA Campinas 2019 - Foto 5" },
+      { src: "/images/eventos/expo-isa-2019/psss_orig-400x284.jpg", alt: "EXPO ISA Campinas 2019 - Foto 6" },
     ],
   },
 ];
