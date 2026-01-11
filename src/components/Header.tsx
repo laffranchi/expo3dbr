@@ -1,18 +1,34 @@
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Ticket, User } from "lucide-react";
+import { Menu, X, Ticket, User, ChevronDown } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import logo from "@/assets/logo.png";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navLinks = [
-    { name: "Início", href: "/" },
-    { name: "O Evento", href: "#sobre" },
+    { name: "Home", href: "/" },
+    { name: "Quero ser Palestrante", href: "/palestrante" },
+    { name: "Quero Expor, Patrocinar ou Ser Case", href: "/expositor" },
+  ];
+
+  const participarLinks = [
     { name: "Ingressos", href: "#ingressos" },
-    { name: "Contato", href: "#contato" },
+    { name: "O Evento", href: "#sobre" },
+    { name: "Programação", href: "/programacao" },
+  ];
+
+  const extraLinks = [
+    { name: "Edições Anteriores", href: "/edicoes-anteriores" },
+    { name: "Blog", href: "/blog" },
   ];
 
   const scrollToSection = (href: string) => {
@@ -33,15 +49,60 @@ const Header = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <button
+          <nav className="hidden lg:flex items-center gap-6">
+            {navLinks.map((link) =>
+              link.href.startsWith("#") ? (
+                <button
+                  key={link.name}
+                  onClick={() => scrollToSection(link.href)}
+                  className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors whitespace-nowrap"
+                >
+                  {link.name}
+                </button>
+              ) : (
+                <Link
+                  key={link.name}
+                  to={link.href}
+                  className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors whitespace-nowrap"
+                >
+                  {link.name}
+                </Link>
+              )
+            )}
+
+            {/* Quero Participar Dropdown */}
+            <DropdownMenu>
+              <DropdownMenuTrigger className="flex items-center gap-1 text-sm font-medium text-muted-foreground hover:text-primary transition-colors whitespace-nowrap">
+                Quero Participar
+                <ChevronDown className="h-4 w-4" />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="center" className="bg-background border">
+                {participarLinks.map((link) =>
+                  link.href.startsWith("#") ? (
+                    <DropdownMenuItem
+                      key={link.name}
+                      onClick={() => scrollToSection(link.href)}
+                      className="cursor-pointer"
+                    >
+                      {link.name}
+                    </DropdownMenuItem>
+                  ) : (
+                    <DropdownMenuItem key={link.name} asChild>
+                      <Link to={link.href}>{link.name}</Link>
+                    </DropdownMenuItem>
+                  )
+                )}
+              </DropdownMenuContent>
+            </DropdownMenu>
+
+            {extraLinks.map((link) => (
+              <Link
                 key={link.name}
-                onClick={() => scrollToSection(link.href)}
-                className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+                to={link.href}
+                className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors whitespace-nowrap"
               >
                 {link.name}
-              </button>
+              </Link>
             ))}
           </nav>
 
@@ -63,7 +124,7 @@ const Header = () => {
 
           {/* Mobile Menu Toggle */}
           <button
-            className="md:hidden p-2"
+            className="lg:hidden p-2"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? (
@@ -81,18 +142,68 @@ const Header = () => {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden pb-4"
+              className="lg:hidden pb-4"
             >
               <nav className="flex flex-col gap-2">
-                {navLinks.map((link) => (
-                  <button
+                {navLinks.map((link) =>
+                  link.href.startsWith("#") ? (
+                    <button
+                      key={link.name}
+                      onClick={() => scrollToSection(link.href)}
+                      className="text-left px-4 py-3 rounded-lg text-foreground hover:bg-muted transition-colors"
+                    >
+                      {link.name}
+                    </button>
+                  ) : (
+                    <Link
+                      key={link.name}
+                      to={link.href}
+                      className="px-4 py-3 rounded-lg text-foreground hover:bg-muted transition-colors"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {link.name}
+                    </Link>
+                  )
+                )}
+                
+                {/* Quero Participar Section */}
+                <div className="px-4 py-2 text-sm font-semibold text-muted-foreground">
+                  Quero Participar
+                </div>
+                {participarLinks.map((link) =>
+                  link.href.startsWith("#") ? (
+                    <button
+                      key={link.name}
+                      onClick={() => scrollToSection(link.href)}
+                      className="text-left px-6 py-2 rounded-lg text-foreground hover:bg-muted transition-colors"
+                    >
+                      {link.name}
+                    </button>
+                  ) : (
+                    <Link
+                      key={link.name}
+                      to={link.href}
+                      className="px-6 py-2 rounded-lg text-foreground hover:bg-muted transition-colors"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {link.name}
+                    </Link>
+                  )
+                )}
+
+                <hr className="my-2 border-border" />
+
+                {extraLinks.map((link) => (
+                  <Link
                     key={link.name}
-                    onClick={() => scrollToSection(link.href)}
-                    className="text-left px-4 py-3 rounded-lg text-foreground hover:bg-muted transition-colors"
+                    to={link.href}
+                    className="px-4 py-3 rounded-lg text-foreground hover:bg-muted transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
                   >
                     {link.name}
-                  </button>
+                  </Link>
                 ))}
+
                 <hr className="my-2 border-border" />
                 <Link
                   to="/meus-ingressos"
