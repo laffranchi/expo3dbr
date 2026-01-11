@@ -21,6 +21,16 @@ const editions: Edition[] = [
     images: [
       { src: "/images/edicoes/2024/20240928_150721-scaled.jpg", alt: "Expo3DBR 2024 - Foto 1" },
       { src: "/images/edicoes/2024/20240928_151721-scaled.jpg", alt: "Expo3DBR 2024 - Foto 2" },
+      { src: "/images/edicoes/2024/20240928_151736-scaled.jpg", alt: "Expo3DBR 2024 - Foto 3" },
+      { src: "/images/edicoes/2024/20240928_155841-scaled.jpg", alt: "Expo3DBR 2024 - Foto 4" },
+      { src: "/images/edicoes/2024/20240928_160425-scaled.jpg", alt: "Expo3DBR 2024 - Foto 5" },
+      { src: "/images/edicoes/2024/20240928_160520.jpg", alt: "Expo3DBR 2024 - Foto 6" },
+      { src: "/images/edicoes/2024/20240928_162921-scaled.jpg", alt: "Expo3DBR 2024 - Foto 7" },
+      { src: "/images/edicoes/2024/20240928_163431-scaled.jpg", alt: "Expo3DBR 2024 - Foto 8" },
+      { src: "/images/edicoes/2024/20240928_163922-scaled.jpg", alt: "Expo3DBR 2024 - Foto 9" },
+      { src: "/images/edicoes/2024/Captura-de-tela-2024-10-08-095722.png", alt: "Expo3DBR 2024 - Foto 10" },
+      { src: "/images/edicoes/2024/Captura-de-tela-2024-10-08-095836.png", alt: "Expo3DBR 2024 - Foto 11" },
+      { src: "/images/edicoes/2024/Captura-de-tela-2024-10-08-095849.png", alt: "Expo3DBR 2024 - Foto 12" },
     ],
   },
   {
