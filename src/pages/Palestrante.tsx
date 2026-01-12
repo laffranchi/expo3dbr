@@ -1,8 +1,17 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Send, Mic, Users, Award, Star } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import SpeakerSubmissionForm from "@/components/palestrante/SpeakerSubmissionForm";
 import speakerImage from "@/assets/speaker-image.jpg";
 
 const benefits = [
@@ -29,6 +38,8 @@ const benefits = [
 ];
 
 const Palestrante = () => {
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -71,12 +82,20 @@ const Palestrante = () => {
                 Esta é uma oportunidade única para profissionais e especialistas ampliar sua presença no setor, fortalecer conexões e participarem ativamente das discussões que irão influenciar o setor no país.
               </p>
 
-              <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground border-0 mt-4">
-                <a href="mailto:palestrante@expo3dbr.com.br?subject=Proposta de Palestra - Expo3DBr">
-                  <Send className="w-5 h-5 mr-2" />
-                  ENVIAR PROPOSTA DE PALESTRA
-                </a>
-              </Button>
+              <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+                <DialogTrigger asChild>
+                  <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground border-0 mt-4">
+                    <Send className="w-5 h-5 mr-2" />
+                    ENVIAR PROPOSTA DE PALESTRA
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="max-w-2xl">
+                  <DialogHeader>
+                    <DialogTitle className="text-2xl">Palestrante Expo3DBr 2026</DialogTitle>
+                  </DialogHeader>
+                  <SpeakerSubmissionForm onSuccess={() => setIsDialogOpen(false)} />
+                </DialogContent>
+              </Dialog>
             </motion.div>
 
             {/* Imagem */}
