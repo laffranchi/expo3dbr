@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Ticket, User, ChevronDown } from "lucide-react";
+import { Menu, X, Ticket, User, ChevronDown, LogOut, Loader2 } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
@@ -8,11 +8,17 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
+  DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
+import { useAuth } from "@/contexts/AuthContext";
+import { useToast } from "@/hooks/use-toast";
 import logo from "@/assets/logo.png";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { user, loading, signOut } = useAuth();
+  const navigate = useNavigate();
+  const { toast } = useToast();
 
   const navLinks = [
     { name: "Home", href: "/" },
@@ -35,6 +41,21 @@ const Header = () => {
       element?.scrollIntoView({ behavior: "smooth" });
       setIsMenuOpen(false);
     }
+  };
+
+  const handleSignOut = async () => {
+    await signOut();
+    toast({
+      title: "Logout realizado",
+      description: "Até logo!",
+    });
+    navigate("/");
+    setIsMenuOpen(false);
+  };
+
+  const getUserDisplayName = () => {
+    if (!user) return "";
+    return user.user_metadata?.full_name || user.email?.split("@")[0] || "Usuário";
   };
 
   return (
@@ -112,12 +133,42 @@ const Header = () => {
                 Meus Ingressos
               </Button>
             </Link>
-            <Link to="/login">
-              <Button variant="outline" size="sm" className="gap-2">
-                <User className="h-4 w-4" />
-                Entrar
+            
+            {loading ? (
+              <Button variant="outline" size="sm" disabled>
+                <Loader2 className="h-4 w-4 animate-spin" />
               </Button>
-            </Link>
+            ) : user ? (
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="outline" size="sm" className="gap-2">
+                    <User className="h-4 w-4" />
+                    {getUserDisplayName()}
+                    <ChevronDown className="h-3 w-3" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="bg-background border">
+                  <DropdownMenuItem asChild>
+                    <Link to="/meus-ingressos" className="flex items-center gap-2">
+                      <Ticket className="h-4 w-4" />
+                      Meus Ingressos
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem onClick={handleSignOut} className="flex items-center gap-2 text-destructive">
+                    <LogOut className="h-4 w-4" />
+                    Sair
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            ) : (
+              <Link to="/login">
+                <Button variant="outline" size="sm" className="gap-2">
+                  <User className="h-4 w-4" />
+                  Entrar
+                </Button>
+              </Link>
+            )}
           </div>
 
           {/* Mobile Menu Toggle */}
@@ -211,14 +262,36 @@ const Header = () => {
                   <Ticket className="h-4 w-4" />
                   Meus Ingressos
                 </Link>
-                <Link
-                  to="/login"
-                  className="flex items-center gap-2 px-4 py-3 rounded-lg text-foreground hover:bg-muted transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  <User className="h-4 w-4" />
-                  Entrar
-                </Link>
+                
+                {loading ? (
+                  <div className="flex items-center gap-2 px-4 py-3">
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                    Carregando...
+                  </div>
+                ) : user ? (
+                  <>
+                    <div className="flex items-center gap-2 px-4 py-3 text-foreground">
+                      <User className="h-4 w-4" />
+                      {getUserDisplayName()}
+                    </div>
+                    <button
+                      onClick={handleSignOut}
+                      className="flex items-center gap-2 px-4 py-3 rounded-lg text-destructive hover:bg-muted transition-colors"
+                    >
+                      <LogOut className="h-4 w-4" />
+                      Sair
+                    </button>
+                  </>
+                ) : (
+                  <Link
+                    to="/login"
+                    className="flex items-center gap-2 px-4 py-3 rounded-lg text-foreground hover:bg-muted transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    <User className="h-4 w-4" />
+                    Entrar
+                  </Link>
+                )}
               </nav>
             </motion.div>
           )}
