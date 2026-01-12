@@ -1,7 +1,8 @@
 import { useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ChevronLeft, ChevronRight, ZoomIn } from "lucide-react";
+import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import ImageWithFallback from "@/components/shared/ImageWithFallback";
 import type { GalleryImage } from "@/data/editions";
 
 interface PhotoLightboxProps {
@@ -123,10 +124,11 @@ const PhotoLightbox = ({
             className="relative z-40 max-w-[90vw] max-h-[85vh]"
             onClick={(e) => e.stopPropagation()}
           >
-            <img
+            <ImageWithFallback
               src={currentImage.src}
               alt={currentImage.alt}
               className="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl"
+              loading="eager"
             />
           </motion.div>
 
@@ -147,7 +149,7 @@ const PhotoLightbox = ({
                       : 'opacity-60 hover:opacity-100'
                   }`}
                 >
-                  <img
+                  <ImageWithFallback
                     src={img.src}
                     alt={img.alt}
                     className="w-full h-full object-cover"
