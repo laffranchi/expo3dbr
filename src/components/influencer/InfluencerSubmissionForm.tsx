@@ -20,9 +20,9 @@ const influencerFormSchema = z.object({
   dataNascimento: z.string().min(1, "Data de nascimento obrigatória"),
   endereco: z.string().optional(),
   sitePortal: z.string().url("Link inválido - inclua https://").optional().or(z.literal("")),
-  linkYoutube: z.string().url("Link do YouTube inválido - inclua https://"),
-  linkTiktok: z.string().url("Link do TikTok inválido - inclua https://"),
-  linkInstagram: z.string().url("Link do Instagram inválido - inclua https://"),
+  linkYoutube: z.string().url("Link do YouTube inválido - inclua https://").optional().or(z.literal("")),
+  linkTiktok: z.string().url("Link do TikTok inválido - inclua https://").optional().or(z.literal("")),
+  linkInstagram: z.string().url("Link do Instagram inválido - inclua https://").optional().or(z.literal("")),
   linksPostagens: z.string().min(5, "Informe os links das postagens"),
   eventosAnteriores: z.string().min(3, "Campo obrigatório"),
   expositorIndicou: z.string().optional(),
@@ -34,6 +34,14 @@ const influencerFormSchema = z.object({
   autorizacaoImagem: z.literal(true, {
     errorMap: () => ({ message: "Você precisa autorizar o uso de imagem" })
   }),
+}).refine((data) => {
+  const hasYoutube = data.linkYoutube && data.linkYoutube.length > 0;
+  const hasTiktok = data.linkTiktok && data.linkTiktok.length > 0;
+  const hasInstagram = data.linkInstagram && data.linkInstagram.length > 0;
+  return hasYoutube || hasTiktok || hasInstagram;
+}, {
+  message: "Preencha pelo menos uma rede social (YouTube, TikTok ou Instagram)",
+  path: ["linkYoutube"],
 });
 
 type InfluencerFormData = z.infer<typeof influencerFormSchema>;
@@ -179,40 +187,56 @@ const InfluencerSubmissionForm = ({ onSuccess }: InfluencerSubmissionFormProps) 
           )}
         </div>
 
-        {/* Redes Sociais */}
-        <div className="space-y-2">
-          <Label htmlFor="linkYoutube">Link do YouTube *</Label>
-          <Input
-            id="linkYoutube"
-            {...register("linkYoutube")}
-            placeholder="https://youtube.com/@seucanal"
-          />
-          {errors.linkYoutube && (
+        {/* Redes Sociais - Pelo menos 1 obrigatório */}
+        <div className="space-y-3">
+          <Label className="text-base font-medium">
+            Redes Sociais <span className="text-destructive">*</span>
+            <span className="text-sm font-normal text-muted-foreground block mt-1">
+              (preencha pelo menos uma)
+            </span>
+          </Label>
+          
+          <div className="space-y-3">
+            <div className="space-y-2">
+              <Label htmlFor="linkYoutube" className="text-sm">Link do YouTube</Label>
+              <Input
+                id="linkYoutube"
+                {...register("linkYoutube")}
+                placeholder="https://youtube.com/@seucanal"
+              />
+              {errors.linkYoutube && errors.linkYoutube.message?.includes("inválido") && (
+                <p className="text-sm text-destructive">{errors.linkYoutube.message}</p>
+              )}
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="linkTiktok" className="text-sm">Link do TikTok</Label>
+              <Input
+                id="linkTiktok"
+                {...register("linkTiktok")}
+                placeholder="https://tiktok.com/@seuperfil"
+              />
+              {errors.linkTiktok && (
+                <p className="text-sm text-destructive">{errors.linkTiktok.message}</p>
+              )}
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="linkInstagram" className="text-sm">Link do Instagram</Label>
+              <Input
+                id="linkInstagram"
+                {...register("linkInstagram")}
+                placeholder="https://instagram.com/seuperfil"
+              />
+              {errors.linkInstagram && (
+                <p className="text-sm text-destructive">{errors.linkInstagram.message}</p>
+              )}
+            </div>
+          </div>
+          
+          {/* Erro do grupo - pelo menos 1 obrigatório */}
+          {errors.linkYoutube && errors.linkYoutube.message?.includes("pelo menos") && (
             <p className="text-sm text-destructive">{errors.linkYoutube.message}</p>
-          )}
-        </div>
-
-        <div className="space-y-2">
-          <Label htmlFor="linkTiktok">Link do TikTok *</Label>
-          <Input
-            id="linkTiktok"
-            {...register("linkTiktok")}
-            placeholder="https://tiktok.com/@seuperfil"
-          />
-          {errors.linkTiktok && (
-            <p className="text-sm text-destructive">{errors.linkTiktok.message}</p>
-          )}
-        </div>
-
-        <div className="space-y-2">
-          <Label htmlFor="linkInstagram">Link do Instagram *</Label>
-          <Input
-            id="linkInstagram"
-            {...register("linkInstagram")}
-            placeholder="https://instagram.com/seuperfil"
-          />
-          {errors.linkInstagram && (
-            <p className="text-sm text-destructive">{errors.linkInstagram.message}</p>
           )}
         </div>
 
