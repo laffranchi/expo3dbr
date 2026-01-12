@@ -21,9 +21,7 @@ const Header = () => {
   ];
 
   const participarLinks = [
-    { name: "Ingressos", href: "#ingressos" },
-    { name: "O Evento", href: "#sobre" },
-    { name: "Programação", href: "/programacao" },
+    { name: "Influencer/Imprensa", href: "/influencer" },
   ];
 
   const extraLinks = [
