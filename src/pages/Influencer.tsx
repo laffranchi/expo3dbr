@@ -12,7 +12,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import InfluencerSubmissionForm from "@/components/influencer/InfluencerSubmissionForm";
-import expositorImage from "@/assets/expositor-image.jpg";
+import influencerImage from "@/assets/influencer-image.jpg";
 
 const benefits = [
   {
@@ -106,8 +106,8 @@ const Influencer = () => {
               className="relative"
             >
               <img
-                src={expositorImage}
-                alt="Evento Expo3DBr"
+                src={influencerImage}
+                alt="Apresentadores Expo3DBr"
                 className="w-full rounded-2xl shadow-2xl"
               />
             </motion.div>
