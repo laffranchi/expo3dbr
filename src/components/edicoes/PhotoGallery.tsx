@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
 import PhotoLightbox from "./PhotoLightbox";
+import ImageWithFallback from "@/components/shared/ImageWithFallback";
 import type { GalleryImage } from "@/data/editions";
 
 interface PhotoGalleryProps {
@@ -50,7 +51,7 @@ const PhotoGallery = ({ images, initialCount = 24 }: PhotoGalleryProps) => {
             onClick={() => openLightbox(index)}
           >
             <div className="relative overflow-hidden rounded-xl">
-              <img
+              <ImageWithFallback
                 src={image.src}
                 alt={image.alt}
                 className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105"

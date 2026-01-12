@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { MapPin, Calendar, Camera, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import ImageWithFallback from "@/components/shared/ImageWithFallback";
 import type { Edition } from "@/data/editions";
 
 interface EditionCardProps {
@@ -26,7 +27,7 @@ const EditionCard = ({ edition, index, variant = 'primary' }: EditionCardProps) 
     >
       {/* Cover Image */}
       <div className="relative aspect-[16/10] overflow-hidden">
-        <img
+        <ImageWithFallback
           src={edition.coverImage}
           alt={edition.title}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"

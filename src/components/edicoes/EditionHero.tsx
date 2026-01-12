@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowLeft, MapPin, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import ImageWithFallback from "@/components/shared/ImageWithFallback";
 import type { Edition } from "@/data/editions";
 
 interface EditionHeroProps {
@@ -13,10 +14,11 @@ const EditionHero = ({ edition }: EditionHeroProps) => {
     <section className="relative min-h-[60vh] flex items-end overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0">
-        <img
+        <ImageWithFallback
           src={edition.coverImage}
           alt={edition.title}
           className="w-full h-full object-cover"
+          loading="eager"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/20" />
       </div>
