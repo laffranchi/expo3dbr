@@ -1,5 +1,11 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 interface TimelineItem {
   year: number;
@@ -23,7 +29,7 @@ const timelineData: TimelineItem[] = [
 
 const TimelineTrajetoria = () => {
   return (
-    <section className="relative py-12 md:py-16 overflow-hidden">
+    <section className="relative py-8 md:py-10 overflow-hidden">
       <div className="absolute inset-0 gradient-primary opacity-95" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05)_0%,transparent_70%)]" />
       
@@ -33,138 +39,88 @@ const TimelineTrajetoria = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-10 md:mb-12"
+          className="text-center mb-8"
         >
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold">
+          <h2 className="text-xl md:text-2xl lg:text-3xl font-bold">
             <span className="text-white">TRAJETÓRIA </span>
             <span className="text-secondary italic">IMPRESSA</span>
           </h2>
-          <p className="text-white/70 mt-2 text-sm md:text-base">
-            Nossa jornada desde 2014
+          <p className="text-white/60 mt-1 text-sm">
+            Clique em um ano para ver detalhes
           </p>
         </motion.div>
 
-        {/* Desktop Timeline - Horizontal */}
+        {/* Desktop Timeline - Horizontal Single Line */}
         <div className="hidden md:block">
           <div className="relative">
             {/* Timeline Line */}
-            <div className="absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-secondary/50 via-secondary to-secondary/50 transform -translate-y-1/2" />
+            <div className="absolute bottom-[7px] left-0 right-0 h-0.5 bg-secondary/60" />
             
             {/* Timeline Items */}
-            <div className="flex justify-between items-center relative">
-              {timelineData.map((item, index) => {
-                const isTop = index % 2 === 0;
-                
-                return (
-                  <motion.div
-                    key={item.year}
-                    initial={{ opacity: 0, y: isTop ? -20 : 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1, duration: 0.5 }}
-                    className={`flex flex-col items-center ${isTop ? 'flex-col' : 'flex-col-reverse'}`}
-                  >
-                    {/* Content */}
-                    <Link
-                      to={`/edicoes/${item.slug}`}
-                      className={`group text-center ${isTop ? 'mb-4' : 'mt-4'} max-w-[100px] lg:max-w-[120px]`}
-                    >
+            <div className="flex justify-between items-end relative">
+              <TooltipProvider delayDuration={100}>
+                {timelineData.map((item, index) => (
+                  <Tooltip key={item.year}>
+                    <TooltipTrigger asChild>
                       <motion.div
-                        whileHover={{ scale: 1.05 }}
-                        className="transition-all duration-300"
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: index * 0.08, duration: 0.3 }}
                       >
-                        <span className="text-2xl lg:text-3xl font-bold text-white group-hover:text-secondary transition-colors">
-                          {item.year}
-                        </span>
-                        <p className="text-xs lg:text-sm text-white/80 font-medium mt-1 leading-tight">
-                          {item.title}
-                        </p>
-                        {item.theme && (
-                          <p className="text-[10px] lg:text-xs text-white/60 mt-0.5 leading-tight">
-                            {item.theme}
-                          </p>
-                        )}
-                        {item.location && (
-                          <p className="text-[10px] lg:text-xs text-secondary/80 mt-0.5">
-                            {item.location}
-                          </p>
-                        )}
+                        <Link
+                          to={`/edicoes/${item.slug}`}
+                          className="group flex flex-col items-center cursor-pointer"
+                        >
+                          <span className="text-lg lg:text-xl font-bold text-white group-hover:text-secondary transition-colors mb-2">
+                            {item.year}
+                          </span>
+                          <div className="w-3.5 h-3.5 rounded-full bg-secondary border-2 border-primary shadow-md shadow-secondary/40 group-hover:scale-150 transition-transform" />
+                        </Link>
                       </motion.div>
-                    </Link>
-                    
-                    {/* Dot */}
-                    <div className="w-4 h-4 rounded-full bg-secondary border-4 border-primary shadow-lg shadow-secondary/30 group-hover:scale-125 transition-transform" />
-                  </motion.div>
-                );
-              })}
+                    </TooltipTrigger>
+                    <TooltipContent side="top" className="bg-background border-secondary/30">
+                      <p className="font-semibold text-foreground">{item.title}</p>
+                      {item.theme && <p className="text-sm text-muted-foreground">{item.theme}</p>}
+                      {item.location && <p className="text-xs text-secondary">{item.location}</p>}
+                    </TooltipContent>
+                  </Tooltip>
+                ))}
+              </TooltipProvider>
             </div>
           </div>
         </div>
 
-        {/* Mobile Timeline - Vertical */}
-        <div className="md:hidden">
-          <div className="relative pl-8">
-            {/* Vertical Line */}
-            <div className="absolute left-3 top-0 bottom-0 w-0.5 bg-gradient-to-b from-secondary via-secondary to-secondary/50" />
+        {/* Mobile Timeline - Horizontal Scroll */}
+        <div className="md:hidden overflow-x-auto pb-4">
+          <div className="relative min-w-max px-4">
+            {/* Timeline Line */}
+            <div className="absolute bottom-[7px] left-0 right-0 h-0.5 bg-secondary/60" />
             
-            <div className="space-y-6">
+            {/* Timeline Items */}
+            <div className="flex gap-8 items-end relative">
               {timelineData.map((item, index) => (
                 <motion.div
                   key={item.year}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.08, duration: 0.4 }}
-                  className="relative"
+                  transition={{ delay: index * 0.05, duration: 0.3 }}
                 >
-                  {/* Dot */}
-                  <div className="absolute -left-5 top-1 w-3 h-3 rounded-full bg-secondary border-2 border-primary shadow-md shadow-secondary/30" />
-                  
-                  {/* Content */}
                   <Link
                     to={`/edicoes/${item.slug}`}
-                    className="block group"
+                    className="flex flex-col items-center"
                   >
-                    <motion.div
-                      whileTap={{ scale: 0.98 }}
-                      className="bg-white/5 backdrop-blur-sm rounded-lg p-3 border border-white/10 hover:border-secondary/30 transition-all"
-                    >
-                      <div className="flex items-baseline gap-3">
-                        <span className="text-xl font-bold text-secondary">
-                          {item.year}
-                        </span>
-                        <span className="text-sm font-medium text-white">
-                          {item.title}
-                        </span>
-                      </div>
-                      {item.theme && (
-                        <p className="text-xs text-white/70 mt-1">
-                          {item.theme}
-                        </p>
-                      )}
-                      {item.location && (
-                        <p className="text-xs text-secondary/70 mt-0.5">
-                          📍 {item.location}
-                        </p>
-                      )}
-                    </motion.div>
+                    <span className="text-base font-bold text-white mb-2">
+                      {item.year}
+                    </span>
+                    <div className="w-3 h-3 rounded-full bg-secondary border-2 border-primary shadow-md shadow-secondary/40" />
                   </Link>
                 </motion.div>
               ))}
             </div>
           </div>
         </div>
-
-        {/* Arrow indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.8 }}
-          className="text-center mt-8 text-white/50 text-sm"
-        >
-          <span>Clique em um ano para ver detalhes</span>
-        </motion.div>
       </div>
     </section>
   );
