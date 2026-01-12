@@ -84,14 +84,14 @@ const Palestrante = () => {
 
               <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
                 <DialogTrigger asChild>
-                  <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground border-0 mt-4">
+                  <Button size="lg" className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-primary-foreground border-0 mt-4">
                     <Send className="w-5 h-5 mr-2" />
                     ENVIAR PROPOSTA DE PALESTRA
                   </Button>
                 </DialogTrigger>
-                <DialogContent className="max-w-2xl">
+                <DialogContent className="max-w-2xl w-[95vw] sm:w-full">
                   <DialogHeader>
-                    <DialogTitle className="text-2xl">Palestrante Expo3DBr 2026</DialogTitle>
+                    <DialogTitle className="text-xl sm:text-2xl">Palestrante Expo3DBr 2026</DialogTitle>
                   </DialogHeader>
                   <SpeakerSubmissionForm onSuccess={() => setIsDialogOpen(false)} />
                 </DialogContent>
