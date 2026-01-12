@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import EditionCard from "@/components/edicoes/EditionCard";
-import TimelineTrajetoria from "@/components/edicoes/TimelineTrajetoria";
 import { editions, eventos, encontros } from "@/data/editions";
 import { Calendar, MapPin, Users } from "lucide-react";
 
@@ -45,9 +44,6 @@ const EdicoesAnteriores = () => {
           </motion.p>
         </div>
       </section>
-
-      {/* Timeline Trajetória Impressa */}
-      <TimelineTrajetoria />
 
       {/* Edições Principais */}
       <section className="py-16 md:py-24">
