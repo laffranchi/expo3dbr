@@ -92,7 +92,7 @@ const SpeakerSubmissionForm = ({ onSuccess }: SpeakerSubmissionFormProps) => {
   };
 
   return (
-    <ScrollArea className="h-[70vh] pr-4">
+    <ScrollArea className="h-[55vh] sm:h-[65vh] md:h-[70vh] pr-2 sm:pr-4">
       <div className="space-y-6 pb-6">
         {/* Header */}
         <div className="space-y-4">
@@ -362,7 +362,7 @@ const SpeakerSubmissionForm = ({ onSuccess }: SpeakerSubmissionFormProps) => {
                 render={() => (
                   <FormItem>
                     <FormLabel>Qual tipo de conteúdo deseja apresentar? <span className="text-destructive">*</span></FormLabel>
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mt-2">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 mt-2">
                       {tipoConteudoOptions.map((option) => (
                         <FormField
                           key={option.id}

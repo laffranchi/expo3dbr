@@ -92,26 +92,26 @@ const PhotoLightbox = ({
           <Button
             variant="ghost"
             size="icon"
-            className="absolute left-4 z-50 w-12 h-12 text-white hover:bg-white/10 rounded-full"
+            className="absolute left-2 sm:left-4 z-50 w-10 h-10 sm:w-12 sm:h-12 text-white hover:bg-white/10 rounded-full"
             onClick={(e) => {
               e.stopPropagation();
               goToPrev();
             }}
           >
-            <ChevronLeft className="w-8 h-8" />
+            <ChevronLeft className="w-6 h-6 sm:w-8 sm:h-8" />
           </Button>
 
           {/* Navigation - Next */}
           <Button
             variant="ghost"
             size="icon"
-            className="absolute right-4 z-50 w-12 h-12 text-white hover:bg-white/10 rounded-full"
+            className="absolute right-2 sm:right-4 z-50 w-10 h-10 sm:w-12 sm:h-12 text-white hover:bg-white/10 rounded-full"
             onClick={(e) => {
               e.stopPropagation();
               goToNext();
             }}
           >
-            <ChevronRight className="w-8 h-8" />
+            <ChevronRight className="w-6 h-6 sm:w-8 sm:h-8" />
           </Button>
 
           {/* Image */}
@@ -132,8 +132,13 @@ const PhotoLightbox = ({
             />
           </motion.div>
 
-          {/* Thumbnail strip at bottom */}
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-50 flex gap-2 max-w-[90vw] overflow-x-auto p-2 bg-black/40 backdrop-blur-sm rounded-xl">
+          {/* Swipe hint for mobile */}
+          <p className="sm:hidden absolute bottom-20 left-1/2 -translate-x-1/2 z-50 text-white/60 text-xs">
+            Deslize para navegar
+          </p>
+
+          {/* Thumbnail strip at bottom - hidden on very small screens */}
+          <div className="hidden sm:flex absolute bottom-4 left-1/2 -translate-x-1/2 z-50 gap-2 max-w-[90vw] overflow-x-auto p-2 bg-black/40 backdrop-blur-sm rounded-xl">
             {images.slice(Math.max(0, currentIndex - 4), Math.min(images.length, currentIndex + 5)).map((img, i) => {
               const actualIndex = Math.max(0, currentIndex - 4) + i;
               return (
