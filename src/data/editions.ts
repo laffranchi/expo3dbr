@@ -166,14 +166,14 @@ export const editions: Edition[] = [
     title: "3ª Expo3Dbr 2018",
     year: 2018,
     location: "Hortolândia – SP",
-    coverImage: "/images/edicoes/2018/20180429-112401_orig-400x284.jpg",
+    coverImage: "/images/edicoes/2018/20180429-151739_orig-400x284.jpg",
     highlights: [
       { icon: "Users", title: "Expositores", description: "Crescimento expressivo" },
       { icon: "Camera", title: "Bastidores", description: "Registro completo" },
     ],
     images: [
-      { src: "/images/edicoes/2018/20180429-112401_orig-400x284.jpg", alt: "3ª Expo3Dbr 2018 - Foto 1" },
-      { src: "/images/edicoes/2018/20180429-151739_orig-400x284.jpg", alt: "3ª Expo3Dbr 2018 - Foto 2" },
+      { src: "/images/edicoes/2018/20180429-151739_orig-400x284.jpg", alt: "3ª Expo3Dbr 2018 - Foto 1" },
+      { src: "/images/edicoes/2018/20180429-151753_orig-400x284.jpg", alt: "3ª Expo3Dbr 2018 - Foto 2" },
       { src: "/images/edicoes/2018/20180429-151753_orig-400x284.jpg", alt: "3ª Expo3Dbr 2018 - Foto 3" },
       { src: "/images/edicoes/2018/20180429-151759_orig-400x284.jpg", alt: "3ª Expo3Dbr 2018 - Foto 4" },
       { src: "/images/edicoes/2018/20180429-152848_orig-400x284.jpg", alt: "3ª Expo3Dbr 2018 - Foto 5" },
