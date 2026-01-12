@@ -24,7 +24,7 @@ const EdicoesAnteriores = () => {
             className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full text-white/90 text-sm mb-6"
           >
             <Calendar className="w-4 h-4" />
-            <span>{editions.length} edições realizadas</span>
+            <span>{editions.length + encontros.length} edições realizadas</span>
           </motion.div>
           
           <motion.h1
