@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Ticket, User, ChevronDown, LogOut, Loader2 } from "lucide-react";
+import { Menu, X, Ticket, User, ChevronDown, LogOut, Loader2, LayoutDashboard } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
@@ -12,11 +12,13 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useAuth } from "@/contexts/AuthContext";
 import { useToast } from "@/hooks/use-toast";
+import { useAdminCheck } from "@/hooks/useAdminCheck";
 import logo from "@/assets/logo.png";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { user, loading, signOut } = useAuth();
+  const { isAdmin } = useAdminCheck();
   const navigate = useNavigate();
   const { toast } = useToast();
 
@@ -148,6 +150,14 @@ const Header = () => {
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end" className="bg-background border">
+                  {isAdmin && (
+                    <DropdownMenuItem asChild>
+                      <Link to="/admin" className="flex items-center gap-2">
+                        <LayoutDashboard className="h-4 w-4" />
+                        Dashboard
+                      </Link>
+                    </DropdownMenuItem>
+                  )}
                   <DropdownMenuItem asChild>
                     <Link to="/meus-ingressos" className="flex items-center gap-2">
                       <Ticket className="h-4 w-4" />
@@ -274,6 +284,16 @@ const Header = () => {
                       <User className="h-4 w-4" />
                       {getUserDisplayName()}
                     </div>
+                    {isAdmin && (
+                      <Link
+                        to="/admin"
+                        className="flex items-center gap-2 px-4 py-3 rounded-lg text-foreground hover:bg-muted transition-colors"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        <LayoutDashboard className="h-4 w-4" />
+                        Dashboard
+                      </Link>
+                    )}
                     <button
                       onClick={handleSignOut}
                       className="flex items-center gap-2 px-4 py-3 rounded-lg text-destructive hover:bg-muted transition-colors"
