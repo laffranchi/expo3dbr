@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import EditionCard from "@/components/edicoes/EditionCard";
+import InfluencerVideos from "@/components/edicoes/InfluencerVideos";
 import { editions, eventos, encontros } from "@/data/editions";
 import { Calendar, MapPin, Users } from "lucide-react";
 
@@ -69,6 +70,9 @@ const EdicoesAnteriores = () => {
           </div>
         </div>
       </section>
+
+      {/* Cobertura de Influenciadores */}
+      <InfluencerVideos />
 
       {/* Eventos que Participamos */}
       <section className="py-16 md:py-24 bg-muted/30">
