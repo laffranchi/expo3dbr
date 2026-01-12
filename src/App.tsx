@@ -10,6 +10,7 @@ import MyTickets from "./pages/MyTickets";
 import EdicoesAnteriores from "./pages/EdicoesAnteriores";
 import EdicaoDetalhe from "./pages/EdicaoDetalhe";
 import Palestrante from "./pages/Palestrante";
+import Expositor from "./pages/Expositor";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -28,6 +29,7 @@ const App = () => (
           <Route path="/edicoes-anteriores" element={<EdicoesAnteriores />} />
           <Route path="/edicoes/:slug" element={<EdicaoDetalhe />} />
           <Route path="/palestrante" element={<Palestrante />} />
+          <Route path="/expositor" element={<Expositor />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
